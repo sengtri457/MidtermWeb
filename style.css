@@ -1,0 +1,5 @@
+td {
+    &:hover {
+        cursor: cell;
+    }
+}

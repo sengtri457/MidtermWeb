@@ -7,6 +7,8 @@
     <title>Loan Payment Schedule</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
     <script src="index.js"></script>
     <style>
         body {
@@ -142,12 +144,16 @@
 <body>
     <div class="container">
         <h3>Loan Payment Schedule</h3>
+        <br>
         <p class="fw-bold">
+            Date:
+            <script>document.write(`06/01/2025`);</script>|
             Price:
             <script>document.write(price);</script> | Duration:
-            <script>document.write(months);</script> months
+            <script>document.write(months);</script> months | InterestRate
+            <script>document.write(interestRate);</script>
         </p>
-
+        <br>
         <table class="table text-center bg-transparent">
             <thead>
                 <tr>
@@ -166,7 +172,7 @@
                         let totalPayment = principal + monthly_interest;
                         totalInterest += monthly_interest;
                         remainingBalance -= principal;
-                        let paymentDay = i;
+                        let paymentDay = i + 1;
                         if (i % 2) {
                             document.write(` 
                                 <tr class="bgsky text-white">
@@ -174,7 +180,8 @@
                                     <td colspan="2">${principal}</td>
                                     <td>$${monthly_interest.toFixed(2)}</td>
                                     <td>$${totalPayment.toFixed(2)}</td>
-                                    <td>06/${i < 10 ? "0" + paymentDay : i}/2025</td>
+                                    <td>06/${paymentDay < 10 ? "0" + paymentDay : paymentDay}/2025</td>
+
                                 </tr>`
                             );
                         } else {
@@ -184,7 +191,8 @@
                                     <td colspan="2">${principal}</td>
                                     <td>$${monthly_interest.toFixed(2)}</td>
                                     <td>$${totalPayment.toFixed(2)}</td>
-                                    <td>06/${i < months ? "0" + paymentDay : i}/2025</td>
+                                    <td>06/${paymentDay < 10 ? "0" + paymentDay : paymentDay}/2025</td>
+
                                 </tr>`
                             );
                         }
